@@ -4,42 +4,169 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AlloCx | Quem Somos</title>
-    <link rel="stylesheet" href="css/style.css">
+
+    <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background-image:
+                linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+                url("img/casa-moderna.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        header {
+            background: rgba(0,0,0,0.75);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: #25D366;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 140px auto 60px;
+            padding: 40px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 12px;
+            color: #333;
+        }
+
+        main h1 {
+            margin-bottom: 20px;
+            font-size: 32px;
+            color: #2c3e50;
+        }
+
+        main p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        main ul {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+        main ul li {
+            margin-bottom: 10px;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            main {
+                margin: 120px 15px 40px;
+                padding: 25px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-    <header>
-        <div class="nav-container">
-            <div class="logo"><a href="index.html">AlloCx</a></div> 
-            <nav>
-                <ul>
-                    <li><a href="quem_somos.html">Quem Somos</a></li>
-                    <li><a href="formacao/index.html">Formação</a></li>
-                    <li><a href="servicos/index.html">Serviços</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
-                    <li><a href="https://wa.me/"+244935641973" class="https://web.whatsapp.com" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Entre em Contacto
-                    </a></li>
-                </ul>
-            </nav>
+<header>
+    <div class="nav-container">
+        <div class="logo">
+            <a href="index.html">AlloCx</a>
         </div>
-    </header>
 
-    <main>
-        <h1>Quem Somos</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="quem_somos.html" class="active">Quem Somos</a></li>
+                <li><a href="formacao.html">Formação</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li>
+                    <a href="https://wa.me/244935641973" target="_blank" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
-        <p>A AlloCx nasceu com o propósito de <strong>valorizar pessoas e profissionalizar serviços essenciais </strong> ao dia a dia das famílias e eventos.
-        Atuamos em duas frentes:</p>
+<main>
+    <h1>Quem Somos</h1>
 
-        <ul>
-            <li>Formação & Capacitação de Pessoal</li>
-            <li>Prestação de Serviços Profissionais</li>
-        </ul>
+    <p>
+        A <strong>AlloCx</strong> nasceu com o propósito de
+        <strong>valorizar pessoas e profissionalizar serviços essenciais</strong>
+        no dia a dia das famílias e eventos.
+    </p>
 
-        <p>Acreditamos que um serviço de qualidade começa na <strong>boa preparação, no acompanhamento contínuo e na confiança</strong> entre todas as partes.
-        Os nossos profissionais são selecionados com critérios claros, preparados para atuar com responsabilidade, discrição e excelência.</p>
-    </main>
+    <p>Atuamos em duas frentes:</p>
+
+    <ul>
+        <li>Formação & Capacitação de Pessoal</li>
+        <li>Prestação de Serviços Profissionais</li>
+    </ul>
+
+    <p>
+        Acreditamos que um serviço de qualidade começa na
+        <strong>boa preparação, acompanhamento contínuo e confiança</strong>.
+        Os nossos profissionais são selecionados com critérios claros,
+        preparados para atuar com responsabilidade, discrição e excelência.
+    </p>
+</main>
 
 </body>
 </html>
