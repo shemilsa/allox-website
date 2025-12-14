@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlloCx | Entre em Contacto</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="quem-somos.html">Quem Somos</a>
+        <a href="formacao/index.html">Formação</a>
+        <a href="servicos/index.html">Serviços</a>
+        <a href="contato.html">Entre em Contacto</a>
+    </nav>
+
+    <main>
+        <h1>Entre em Contacto</h1>
+
+        <p>Quer saber mais sobre as nossas formações ou contratar um serviço?
+        Preencha o formulário abaixo e a nossa equipa entrará em contacto consigo.</p>
+
+        <form action="#" method="POST"> 
+            <label for="assunto">Assunto Principal:</label>
+            <select id="assunto" name="assunto" required>
+                <option value="" disabled selected>Escolha uma opção</option>
+                <option value="Formacao_Anjos_do_Lar">Formação – Anjos do Lar</option>
+                <option value="Formacao_Anjos_de_Eventos">Formação – Anjos de Eventos</option>
+                <option value="Servicos_Anjos_do_Lar">Serviços – Anjos do Lar</option>
+                <option value="Servicos_Anjos_de_Eventos">Serviços – Anjos de Eventos</option>
+            </select>
+            <br><br>
+
+            <label for="nome">Nome Completo:</label>
+            <input type="text" id="nome" name="nome" required>
+            <br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br><br>
+
+            <label for="telefone">+351968362601:</label>
+            <input type="tel" id="telefone" name="telefone">
+            <br><br>
+
+            <label for="mensagem">Mensagem / Detalhes:</label>
+            <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+            <br><br>
+
+            <button type="submit">Enviar Pedido</button>
+        </form>
+    </main>
+
+</body>
+</html>

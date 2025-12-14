@@ -1,0 +1,149 @@
+/*
+    CSS Básico para AlloCx - Estilo Profissional e Limpo
+*/
+
+/* Reset Básico e Fontes */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Container Principal */
+main {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Tipografia */
+h1 {
+    color: #007bff; /* Azul primário */
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #555;
+    margin-top: 30px;
+}
+
+/* Navegação (Menu) */
+nav {
+    background-color: #007bff;
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    display: inline-block;
+    transition: background-color 0.3s;
+    border-radius: 4px;
+}
+
+nav a:hover {
+    background-color: #0056b3; /* Azul mais escuro no hover */
+}
+
+/* Botões de Ação */
+.btn-fale,
+.btn-secundario,
+a[href="../contato.html"] { /* Estiliza os botões das páginas de serviço/formação */
+    display: inline-block;
+    padding: 12px 25px;
+    margin-top: 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-fale,
+a[href="../contato.html"] {
+    background-color: #28a745; /* Verde para ação principal (Inscrever/Contactar) */
+    color: white;
+    border: 1px solid #218838;
+}
+
+.btn-fale:hover,
+a[href="../contato.html"]:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+.btn-secundario {
+    background-color: #6c757d; /* Cinza para ação secundária (Contratar) */
+    color: white;
+    border: 1px solid #5a6268;
+    margin-left: 15px;
+}
+
+.btn-secundario:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* Lista de Serviços/Formação */
+ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* Formulário de Contacto */
+form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+form button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
