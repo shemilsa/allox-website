@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AlloCx | Capacitação de Pessoal & Serviços Profissionais</title>
 
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <!-- Estilos -->
     <style>
         :root {
             --azul-escuro: #0b1f3a;
@@ -125,6 +123,7 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            cursor: pointer; /* Adicionado para botões JavaScript */
         }
 
         .btn-primary {
@@ -159,6 +158,89 @@
             opacity: 0.9;
         }
 
+        /* --- NOVO ESTILO: SIDEBAR FORMULÁRIO --- */
+        #sidebar-form {
+            height: 100%;
+            width: 400px; /* Largura do formulário */
+            position: fixed;
+            z-index: 1050; /* Acima de tudo */
+            top: 0;
+            right: 0;
+            background-color: var(--branco);
+            overflow-x: hidden;
+            transition: 0.5s; /* Animação suave */
+            padding: 60px 30px 30px 30px;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            transform: translateX(100%); /* Esconde inicialmente para a direita */
+        }
+
+        #sidebar-form.open {
+            transform: translateX(0); /* Mostra o formulário */
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 30px;
+            cursor: pointer;
+            color: var(--vermelho-elegante);
+            text-decoration: none;
+        }
+
+        .sidebar-form-content h2 {
+            color: var(--azul-escuro);
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--azul-claro);
+            padding-bottom: 10px;
+        }
+
+        /* Estilos básicos para o formulário dentro do sidebar */
+        #sidebar-form form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--cinza-texto);
+            font-size: 14px;
+        }
+        #sidebar-form form input,
+        #sidebar-form form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #sidebar-form form button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--azul-medio);
+            color: var(--branco);
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #sidebar-form form button:hover {
+            background-color: var(--azul-escuro);
+        }
+
+        /* --- NOVO ESTILO: OVERLAY --- */
+        #overlay {
+            position: fixed;
+            display: none; /* Escondido por defeito */
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5); /* Fundo escuro */
+            z-index: 1000;
+            cursor: pointer;
+        }
+
         /* RESPONSIVO */
         @media (max-width: 768px) {
             nav ul {
@@ -173,6 +255,10 @@
 
             #hero-content h1 {
                 font-size: 26px;
+            }
+
+            #sidebar-form {
+                width: 100%; /* Ocupa a largura total em ecrãs pequenos */
             }
         }
     </style>
@@ -193,7 +279,7 @@
                     <li><a href="servicos/index.html">Serviços</a></li>
                     <li><a href="contato.html">Contacto</a></li>
                     <li>
-                        <a href="https://wa.me/"+244935641973" class="whatsapp-link" target="_blank">
+                        <a href="https://wa.me/244935641973" class="whatsapp-link" target="_blank">
                             <i class="fab fa-whatsapp"></i> Entre em Contacto
                         </a>
                     </li>
@@ -214,7 +300,7 @@
 
             <div class="home-actions">
                 <a href="formacao/index.html" class="btn btn-primary">Quero formação</a>
-                <a href="servicos/index.html" class="btn btn-secondary">Quero contratar um serviço</a>
+                <a onclick="openSidebar()" class="btn btn-secondary" id="open-servico-form">Quero contratar um serviço</a>
             </div>
         </section>
     </main>
@@ -222,6 +308,70 @@
     <footer>
         <p>© 2025 AlloCx — Capacitação & Serviços Profissionais. Todos os direitos reservados.</p>
     </footer>
+
+    <div id="overlay" onclick="closeSidebar()"></div>
+
+    <div id="sidebar-form">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">&times;</a>
+        
+        <div class="sidebar-form-content">
+            <h2>Pedido de Serviços Profissionais</h2>
+
+            <form name="pedido-servico-rapido" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="pedido-servico-rapido" /> 
+
+                <label for="nome_rapido">Seu Nome:</label>
+                <input type="text" id="nome_rapido" name="nome" required>
+
+                <label for="servico_rapido">Tipo de Serviço:</label>
+                <select id="servico_rapido" name="tipo_servico" required>
+                    <option value="" disabled selected>Escolha o serviço desejado</option>
+                    <option value="Anjos_do_Lar">Anjos do Lar (Apoio Doméstico/Cozinheira)</option>
+                    <option value="Anjos_de_Eventos">Anjos de Eventos (Catering/Apoio)</option>
+                    <option value="Outro">Outro Serviço</option>
+                </select>
+
+                <label for="provincia">Província em Angola:</label>
+                <select id="provincia" name="provincia" required>
+                    <option value="" disabled selected>Selecione a Província</option>
+                    <option value="Bengo">Bengo</option>
+                    <option value="Benguela">Benguela</option>
+                    <option value="Bié">Bié</option>
+                    <option value="Cabinda">Cabinda</option>
+                    <option value="Cuando Cubango">Cuando Cubango</option>
+                    <option value="Cuanza Norte">Cuanza Norte</option>
+                    <option value="Cuanza Sul">Cuanza Sul</option>
+                    <option value="Cunene">Cunene</option>
+                    <option value="Huambo">Huambo</option>
+                    <option value="Huíla">Huíla</option>
+                    <option value="Luanda">Luanda</option>
+                    <option value="Lunda Norte">Lunda Norte</option>
+                    <option value="Lunda Sul">Lunda Sul</option>
+                    <option value="Malanje">Malanje</option>
+                    <option value="Moxico">Moxico</option>
+                    <option value="Namibe">Namibe</option>
+                    <option value="Uíge">Uíge</option>
+                    <option value="Zaire">Zaire</option>
+                </select>
+
+                <button type="submit">Solicitar Contacto</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openSidebar() {
+            document.getElementById("sidebar-form").classList.add('open');
+            document.getElementById("overlay").style.display = "block";
+            document.body.style.overflow = "hidden"; // Impede scroll na página principal
+        }
+
+        function closeSidebar() {
+            document.getElementById("sidebar-form").classList.remove('open');
+            document.getElementById("overlay").style.display = "none";
+            document.body.style.overflow = "auto"; // Permite scroll na página principal
+        }
+    </script>
 
 </body>
 </html>
