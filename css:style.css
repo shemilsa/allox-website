@@ -1,66 +1,128 @@
 /*
-    CSS Básico para AlloCx - Estilo Profissional e Limpo
+    CSS para AlloCx - Estilo Eco-Limpa (Verde e Limpo)
 */
 
-/* Reset Básico e Fontes */
+/* --- Variáveis e Reset --- */
+:root {
+    --primary-color: #4CAF50; /* Verde Principal */
+    --secondary-color: #388E3C; /* Verde Mais Escuro */
+    --text-color: #333;
+    --light-bg: #f5f5f5; /* Fundo cinza claro para secções */
+    --white: #ffffff;
+    /* Fontes modernas para replicar o look limpo */
+    --font-family: 'Roboto', 'Arial', sans-serif; 
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: var(--font-family);
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
+    background-color: var(--light-bg);
+    color: var(--text-color);
 }
 
-/* Container Principal */
+/* --- Container Principal --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
 main {
     max-width: 1100px;
     margin: 40px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: var(--white);
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Tipografia */
+/* --- Tipografia --- */
 h1 {
-    color: #007bff; /* Azul primário */
-    border-bottom: 2px solid #ccc;
+    color: var(--primary-color);
+    border-bottom: 2px solid #eee;
     padding-bottom: 10px;
     margin-bottom: 20px;
+    font-size: 2.2em;
 }
 
 h2 {
-    color: #555;
+    color: var(--secondary-color);
     margin-top: 30px;
+    font-size: 1.6em;
 }
 
-/* Navegação (Menu) */
-nav {
-    background-color: #007bff;
+/* --- CABEÇALHO / NAVEGAÇÃO (Estilo Fixo e Limpo) --- */
+header {
+    background-color: var(--white);
     padding: 15px 0;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra suave */
+    position: sticky; 
+    top: 0;
+    z-index: 1000;
 }
 
-nav a {
-    color: white;
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo a {
+    color: var(--primary-color);
+    font-size: 1.8em;
+    font-weight: bold;
     text-decoration: none;
-    padding: 10px 20px;
-    margin: 0 10px;
-    display: inline-block;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 10px 15px;
+    display: block;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* Link do WhatsApp no Menu (Destaca-se) */
+.whatsapp-link {
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: var(--white) !important; /* Forçar cor branca */
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
     transition: background-color 0.3s;
-    border-radius: 4px;
+    margin-left: 15px;
 }
 
-nav a:hover {
-    background-color: #0056b3; /* Azul mais escuro no hover */
+.whatsapp-link:hover {
+    background-color: var(--secondary-color);
+}
+.whatsapp-link i {
+    margin-right: 8px;
+    font-size: 1.2em;
 }
 
-/* Botões de Ação */
-.btn-fale,
-.btn-secundario,
-a[href="../contato.html"] { /* Estiliza os botões das páginas de serviço/formação */
+/* --- BOTÕES (Novo Padrão) --- */
+.btn {
     display: inline-block;
     padding: 12px 25px;
     margin-top: 20px;
@@ -68,35 +130,37 @@ a[href="../contato.html"] { /* Estiliza os botões das páginas de serviço/form
     border-radius: 5px;
     font-weight: bold;
     text-align: center;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
 }
 
-.btn-fale,
-a[href="../contato.html"] {
-    background-color: #28a745; /* Verde para ação principal (Inscrever/Contactar) */
-    color: white;
-    border: 1px solid #218838;
+.btn-primary { /* Botão Verde principal ("Quero Formação" / "Inscrever") */
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
 }
 
-.btn-fale:hover,
-a[href="../contato.html"]:hover {
-    background-color: #218838;
-    transform: translateY(-2px);
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    transform: translateY(-1px);
 }
 
-.btn-secundario {
-    background-color: #6c757d; /* Cinza para ação secundária (Contratar) */
-    color: white;
-    border: 1px solid #5a6268;
+.btn-secondary { /* Botão com Borda (Branco/Transparente) */
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
     margin-left: 15px;
 }
 
-.btn-secundario:hover {
-    background-color: #5a6268;
-    transform: translateY(-2px);
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-1px);
 }
 
-/* Lista de Serviços/Formação */
+/* --- Lista de Serviços/Formação --- */
 ul {
     list-style: disc;
     padding-left: 20px;
@@ -106,19 +170,20 @@ li {
     margin-bottom: 10px;
 }
 
-/* Formulário de Contacto */
+/* --- Formulário de Contacto --- */
 form {
-    background-color: #f9f9f9;
-    padding: 20px;
+    background-color: var(--white); /* Manter branco para contraste no main */
+    padding: 30px;
     border-radius: 5px;
     border: 1px solid #ddd;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 form label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #007bff;
+    color: var(--secondary-color);
 }
 
 form input[type="text"],
@@ -127,23 +192,26 @@ form input[type="tel"],
 form select,
 form textarea {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    font-size: 1em;
 }
 
 form button[type="submit"] {
-    background-color: #007bff;
+    background-color: var(--primary-color);
     color: white;
     padding: 12px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
 form button[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: var(--secondary-color);
 }
