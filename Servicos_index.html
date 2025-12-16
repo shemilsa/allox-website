@@ -1,26 +1,203 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AlloCx | Prestação de Serviços</title>
-    <link rel="stylesheet" href="../css/style.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        :root {
+            --azul-escuro: #0b1f3a;
+            --azul-medio: #1f4fa3;
+            --azul-claro: #e9f0fb;
+            --vermelho-elegante: #b11226;
+            --cinza-texto: #444;
+            --branco: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--azul-claro);
+            color: var(--cinza-texto);
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(90deg, var(--azul-escuro), var(--azul-medio));
+            padding: 18px 0;
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--branco);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo a span {
+            color: var(--vermelho-elegante);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 22px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--branco);
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--vermelho-elegante);
+        }
+
+        .whatsapp-link {
+            background-color: var(--vermelho-elegante);
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .whatsapp-link:hover {
+            background-color: #8f0e1d;
+            color: var(--branco);
+        }
+
+        /* MAIN CONTENT - FORMULÁRIO GRANDE */
+        main {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: var(--branco);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        main h1 {
+            color: var(--azul-escuro);
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        main p {
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: var(--vermelho-elegante);
+            font-weight: 600;
+        }
+
+        /* FORMULÁRIO */
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--azul-escuro);
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form select,
+        form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 25px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        form button[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 30px;
+            background-color: var(--vermelho-elegante);
+            color: var(--branco);
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        form button[type="submit"]:hover {
+            background-color: #8f0e1d;
+        }
+        
+        /* RODAPÉ */
+        footer {
+            background: linear-gradient(90deg, var(--azul-escuro), var(--vermelho-elegante));
+            color: var(--branco);
+            padding: 25px 0;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        footer p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 15px;
+            }
+            main {
+                margin: 30px 15px;
+                padding: 25px;
+            }
+        }
+    </style>
 </head>
 <body>
 
     <header>
         <div class="nav-container">
-            <div class="logo"><a href="../index.html">AlloCx</a></div> 
+            <div class="logo">
+                <a href="../index.html">Allo<span>Cx</span></a>
+            </div> 
             <nav>
                 <ul>
                     <li><a href="../quem_somos.html">Quem Somos</a></li>
                     <li><a href="../formacao/index.html">Formação</a></li>
-                    <li><a href="index.html">Serviços</a></li>
-                    <li><a href="../contato.html">Contacto</a></li>
-                    <li><a href="https://wa.me/35191XXXXXXX" class="whatsapp-link" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Entre em Contacto
-                    </a></li>
+                    <li><a href="index.html">Serviços</a></li> <li><a href="../contato.html">Contacto</a></li>
+                    <li>
+                        <a href="https://wa.me/244935641973" class="whatsapp-link" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Entre em Contacto
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -29,15 +206,61 @@
     <main>
         <h1>Prestação de Serviços</h1>
 
-        <p>Disponibilizamos profissionais capacitados e acompanhados pela AlloCx, prontos para atender famílias, empresas e organizadores de eventos.
-        Todos os serviços são realizados com <strong>qualidade, confiança e profissionalismo</strong>.</p>
+        <p>Preencha o formulário abaixo para solicitar um orçamento ou agendamento rápido. Entraremos em contacto imediatamente!</p>
 
-        <h2>Nossos Serviços</h2>
-        <ul>
-            <li><a href="anjos-do-lar.html">Anjos do Lar</a></li>
-            <li><a href="anjos-eventos.html">Anjos de Eventos</a></li>
-        </ul>
+        <form name="pedido-servico-completo" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="pedido-servico-completo" /> 
+
+            <label for="nome_completo">Seu Nome Completo:</label>
+            <input type="text" id="nome_completo" name="nome" required>
+            
+            <label for="email_servico">Seu Email:</label>
+            <input type="email" id="email_servico" name="email" required>
+            
+            <label for="telefone_servico">Telefone / WhatsApp:</label>
+            <input type="text" id="telefone_servico" name="telefone" placeholder="+244 XXX XXX XXX">
+
+            <label for="servico_escolhido">Tipo de Serviço Desejado:</label>
+            <select id="servico_escolhido" name="tipo_servico" required>
+                <option value="" disabled selected>Escolha um dos nossos serviços</option>
+                <option value="Anjos_do_Lar">Anjos do Lar (Apoio Doméstico/Cozinheira)</option>
+                <option value="Anjos_de_Eventos">Anjos de Eventos (Catering/Apoio)</option>
+                <option value="Outro">Outro Serviço</option>
+            </select>
+
+            <label for="provincia">Província em Angola:</label>
+            <select id="provincia" name="provincia" required>
+                <option value="" disabled selected>Selecione a Província</option>
+                <option value="Bengo">Bengo</option>
+                <option value="Benguela">Benguela</option>
+                <option value="Bié">Bié</option>
+                <option value="Cabinda">Cabinda</option>
+                <option value="Cuando Cubango">Cuando Cubango</option>
+                <option value="Cuanza Norte">Cuanza Norte</option>
+                <option value="Cuanza Sul">Cuanza Sul</option>
+                <option value="Cunene">Cunene</option>
+                <option value="Huambo">Huambo</option>
+                <option value="Huíla">Huíla</option>
+                <option value="Luanda">Luanda</option>
+                <option value="Lunda Norte">Lunda Norte</option>
+                <option value="Lunda Sul">Lunda Sul</option>
+                <option value="Malanje">Malanje</option>
+                <option value="Moxico">Moxico</option>
+                <option value="Namibe">Namibe</option>
+                <option value="Uíge">Uíge</option>
+                <option value="Zaire">Zaire</option>
+            </select>
+            
+            <label for="detalhes_servico">Detalhes do Pedido (opcional):</label>
+            <textarea id="detalhes_servico" name="detalhes" rows="4" placeholder="Descreva brevemente o que precisa..."></textarea>
+
+            <button type="submit">Solicitar Serviço</button>
+        </form>
     </main>
+    
+    <footer>
+        <p>© 2025 AlloCx — Capacitação & Serviços Profissionais. Todos os direitos reservados.</p>
+    </footer>
 
 </body>
 </html>
