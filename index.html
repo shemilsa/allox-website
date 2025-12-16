@@ -2,93 +2,510 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Serviços | AlloCx</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlloCx | Capacitação de Pessoal & Serviços Profissionais</title>
 
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="CSS/style.css">
+    <style>
+        :root {
+            --azul-escuro: #0b1f3a;
+            --azul-medio: #1f4fa3;
+            --azul-claro: #e9f0fb;
+            --vermelho-elegante: #b11226;
+            --cinza-texto: #444;
+            --branco: #ffffff;
+        }
+
+        /* RESET E FONTES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        /* BODY COM IMAGEM DE FUNDO */
+        body {
+            background-image: url("https://example.com/imagem-de-fundo.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: var(--cinza-texto);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(90deg, var(--azul-escuro), var(--azul-medio));
+            padding: 18px 0;
+            position: sticky;
+            top: 0;
+            z-index: 900;
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--branco);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo a span {
+            color: var(--vermelho-elegante);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 22px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--branco);
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--vermelho-elegante);
+        }
+
+        .whatsapp-link {
+            background-color: var(--vermelho-elegante);
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .whatsapp-link:hover {
+            background-color: #8f0e1d;
+            color: var(--branco);
+        }
+
+        /* SEÇÕES GERAIS */
+        main section {
+            width: 90%;
+            max-width: 1200px;
+            margin: 60px auto;
+            background-color: var(--branco);
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+        }
+
+        main section h1,
+        main section h2 {
+            color: var(--azul-escuro);
+            margin-bottom: 20px;
+        }
+
+        main section p {
+            margin-bottom: 12px;
+        }
+
+        /* HERO (HOME) */
+        #hero-content {
+            text-align: center;
+        }
+
+        #hero-content h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        #hero-content p {
+            font-size: 17px;
+            margin-bottom: 35px;
+        }
+
+        /* BOTÕES */
+        .home-actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 26px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--azul-medio);
+            color: var(--branco);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--azul-escuro);
+        }
+
+        .btn-secondary {
+            background-color: var(--vermelho-elegante);
+            color: var(--branco);
+        }
+
+        .btn-secondary:hover {
+            background-color: #8f0e1d;
+        }
+
+        /* RODAPÉ */
+        footer {
+            background: linear-gradient(90deg, var(--azul-escuro), var(--vermelho-elegante));
+            color: var(--branco);
+            padding: 25px 0;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        footer p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* SIDEBAR FORMULÁRIO */
+        #sidebar-form {
+            height: 100%;
+            width: 400px;
+            position: fixed;
+            z-index: 1050;
+            top: 0;
+            right: 0;
+            background-color: var(--branco);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding: 60px 30px 30px 30px;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            transform: translateX(100%);
+        }
+
+        #sidebar-form.open {
+            transform: translateX(0);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 30px;
+            cursor: pointer;
+            color: var(--vermelho-elegante);
+            text-decoration: none;
+        }
+
+        .sidebar-form-content h2 {
+            color: var(--azul-escuro);
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--azul-claro);
+            padding-bottom: 10px;
+        }
+
+        #sidebar-form form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--cinza-texto);
+            font-size: 14px;
+        }
+
+        #sidebar-form form input,
+        #sidebar-form form select,
+        #sidebar-form form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #sidebar-form form button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--azul-medio);
+            color: var(--branco);
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #sidebar-form form button:hover {
+            background-color: var(--azul-escuro);
+        }
+
+        /* OVERLAY */
+        #overlay {
+            position: fixed;
+            display: none;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            cursor: pointer;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            main section {
+                margin: 40px 15px;
+                padding: 30px 20px;
+            }
+
+            #hero-content h1 {
+                font-size: 26px;
+            }
+
+            #sidebar-form {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<header>
-    <div class="nav-container">
-        <div class="logo">
-            <a href="index.html">Allo<span>Cx</span></a>
-        </div>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="#home">Allo<span>Cx</span></a>
+            </div>
 
-        <nav>
+            <nav>
+                <ul>
+                    <li><a href="#quem-somos">Quem Somos</a></li>
+                    <li><a href="#formacao">Formação</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li>
+                        <a href="https://wa.me/244935641973" class="whatsapp-link" target="_blank" rel="noopener">
+                            <i class="fab fa-whatsapp"></i> Entre em Contacto
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HOME -->
+        <section id="home">
+            <div id="hero-content">
+                <h1>Capacitação de Pessoal & Serviços Profissionais para o Lar e Eventos</h1>
+
+                <p>
+                    A <strong>AlloCx</strong> é uma empresa especializada na formação, capacitação e prestação de serviços
+                    nas áreas de apoio doméstico, familiar e eventos. Trabalha com profissionais preparados, acompanhados
+                    e alinhados com padrões de qualidade, ética e confiança.
+                </p>
+
+                <div class="home-actions">
+                    <a href="#formacao" class="btn btn-primary">Quero formação</a>
+                    <button type="button" onclick="openSidebar()" class="btn btn-secondary" id="open-servico-form">
+                        Quero contratar um serviço
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUEM SOMOS -->
+        <section id="quem-somos">
+            <h2>Quem Somos</h2>
+            <p>
+                A AlloCx nasceu com o propósito de profissionalizar o apoio doméstico e de eventos, oferecendo soluções
+                completas para famílias e empresas que procuram confiança e excelência.
+            </p>
+            <p>
+                A equipa integra formadores e coordenadores experientes que acompanham cada profissional desde a seleção
+                até ao desempenho no local de trabalho, garantindo segurança e qualidade.
+            </p>
+        </section>
+
+        <!-- FORMAÇÃO -->
+        <section id="formacao">
+            <h2>Formação</h2>
+            <p>
+                A AlloCx desenvolve programas de capacitação focados em competências práticas, comportamento ético e
+                atendimento de excelência, preparados para o contexto real de trabalho.
+            </p>
+            <p>
+                Os principais programas de formação são:
+            </p>
             <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="quem_somos.html">Quem Somos</a></li>
-                <li><a href="formacao_index.html">Formação</a></li>
-                <li><a href="Servicos_index.html" class="active">Serviços</a></li>
-                <li><a href="Contacto.html">Contacto</a></li>
+                <li><strong>Anjos do Lar</strong> – formação para empregadas domésticas, cozinheiras e apoio familiar.</li>
+                <li><strong>Anjos de Eventos</strong> – formação para apoio de sala, catering, protocolo e atendimento em eventos.</li>
             </ul>
-        </nav>
+        </section>
+
+        <!-- SERVIÇOS -->
+        <section id="servicos">
+            <h2>Serviços</h2>
+            <p>
+                A AlloCx presta serviços profissionais sob medida, com equipas preparadas de acordo com a necessidade de cada cliente.
+            </p>
+            <ul>
+                <li><strong>Serviço Anjos do Lar</strong> – apoio doméstico, limpeza, organização, cozinheira e apoio a famílias.</li>
+                <li><strong>Serviço Anjos de Eventos</strong> – equipas para catering, apoio de sala, montagem, atendimento e protocolo.</li>
+                <li><strong>Outros Serviços</strong> – soluções personalizadas mediante avaliação da necessidade do cliente.</li>
+            </ul>
+            <p>
+                Para contratar um serviço, utilize o botão “Quero contratar um serviço” no topo desta página ou o formulário de contacto abaixo.
+            </p>
+        </section>
+
+        <!-- CONTACTO -->
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <p>
+                Preencha o formulário para entrar em contacto com a AlloCx. Em breve a equipa responde com todas as informações necessárias.
+            </p>
+
+            <form
+                name="contacto-geral"
+                method="POST"
+                data-netlify="true"
+                onsubmit="enviarParaWhatsApp(event)"
+            >
+                <input type="hidden" name="form-name" value="contacto-geral">
+
+                <label for="nome_contacto">Nome:</label>
+                <input type="text" id="nome_contacto" name="nome" required>
+
+                <label for="email_contacto">E-mail:</label>
+                <input type="email" id="email_contacto" name="email" required>
+
+                <label for="mensagem_contacto">Mensagem:</label>
+                <textarea
+                    id="mensagem_contacto"
+                    name="mensagem"
+                    rows="4"
+                    style="width:100%;padding:10px;border-radius:5px;border:1px solid #ccc;margin-bottom:15px;"
+                    required
+                ></textarea>
+
+                <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2025 AlloCx — Capacitação & Serviços Profissionais. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- OVERLAY E SIDEBAR FORM -->
+    <div id="overlay" onclick="closeSidebar()"></div>
+
+    <div id="sidebar-form">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">&times;</a>
+
+        <div class="sidebar-form-content">
+            <h2>Pedido de Serviços Profissionais</h2>
+
+            <form name="pedido-servico-rapido" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="pedido-servico-rapido" />
+
+                <label for="nome_rapido">Seu Nome:</label>
+                <input type="text" id="nome_rapido" name="nome" required>
+
+                <label for="servico_rapido">Tipo de Serviço:</label>
+                <select id="servico_rapido" name="tipo_servico" required>
+                    <option value="" disabled selected>Escolha o serviço desejado</option>
+                    <option value="Anjos_do_Lar">Anjos do Lar (Apoio Doméstico/Cozinheira)</option>
+                    <option value="Anjos_de_Eventos">Anjos de Eventos (Catering/Apoio)</option>
+                    <option value="Outro">Outro Serviço</option>
+                </select>
+
+                <label for="provincia">Província em Angola:</label>
+                <select id="provincia" name="provincia" required>
+                    <option value="" disabled selected>Selecione a Província</option>
+                    <option value="Bengo">Bengo</option>
+                    <option value="Benguela">Benguela</option>
+                    <option value="Bié">Bié</option>
+                    <option value="Cabinda">Cabinda</option>
+                    <option value="Cuando Cubango">Cuando Cubango</option>
+                    <option value="Cuanza Norte">Cuanza Norte</option>
+                    <option value="Cuanza Sul">Cuanza Sul</option>
+                    <option value="Cunene">Cunene</option>
+                    <option value="Huambo">Huambo</option>
+                    <option value="Huíla">Huíla</option>
+                    <option value="Luanda">Luanda</option>
+                    <option value="Lunda Norte">Lunda Norte</option>
+                    <option value="Lunda Sul">Lunda Sul</option>
+                    <option value="Malanje">Malanje</option>
+                    <option value="Moxico">Moxico</option>
+                    <option value="Namibe">Namibe</option>
+                    <option value="Uíge">Uíge</option>
+                    <option value="Zaire">Zaire</option>
+                </select>
+
+                <button type="submit">Solicitar Contacto</button>
+            </form>
+        </div>
     </div>
-</header>
 
-<!-- HERO -->
-<section class="page-hero">
-    <h1>Os Nossos Serviços</h1>
-    <p>Profissionais qualificados para o seu lar, família e eventos</p>
-</section>
+    <script>
+        function openSidebar() {
+            document.getElementById("sidebar-form").classList.add('open');
+            document.getElementById("overlay").style.display = "block";
+            document.body.style.overflow = "hidden";
+        }
 
-<!-- SERVIÇOS -->
-<section class="services-section">
-    <div class="services-container">
+        function closeSidebar() {
+            document.getElementById("sidebar-form").classList.remove('open');
+            document.getElementById("overlay").style.display = "none";
+            document.body.style.overflow = "auto";
+        }
 
-        <!-- Serviço 1 -->
-        <div class="service-card">
-            <i class="fas fa-home"></i>
-            <h3>Apoio Doméstico</h3>
-            <p>
-                Serviços de apoio ao lar com profissionais experientes, de confiança e devidamente capacitados.
-            </p>
-            <a href="servicos_anjos_do_lar.html" class="btn btn-primary">Saber mais</a>
-        </div>
+        function enviarParaWhatsApp(event) {
+            event.preventDefault();
 
-        <!-- Serviço 2 -->
-        <div class="service-card">
-            <i class="fas fa-heart"></i>
-            <h3>Apoio Familiar</h3>
-            <p>
-                Apoio personalizado para famílias, crianças, idosos e pessoas com necessidades específicas.
-            </p>
-            <a href="servicos_anjos_do_lar.html" class="btn btn-primary">Saber mais</a>
-        </div>
+            const numero = "244935641973";
+            const nome = document.getElementById("nome_contacto").value;
+            const email = document.getElementById("email_contacto").value;
+            const mensagem = document.getElementById("mensagem_contacto").value;
 
-        <!-- Serviço 3 -->
-        <div class="service-card">
-            <i class="fas fa-glass-cheers"></i>
-            <h3>Eventos</h3>
-            <p>
-                Profissionais preparados para eventos sociais e corporativos, garantindo excelência no atendimento.
-            </p>
-            <a href="anjosS_eventos.html" class="btn btn-primary">Saber mais</a>
-        </div>
+            const texto =
+                "Novo contacto pelo site AlloCx:%0A" +
+                "Nome: " + encodeURIComponent(nome) + "%0A" +
+                "Email: " + encodeURIComponent(email) + "%0A" +
+                "Mensagem: " + encodeURIComponent(mensagem);
 
-    </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section">
-    <h2>Precisa de um serviço profissional e de confiança?</h2>
-    <p>Entre em contacto connosco e encontre a solução ideal.</p>
-    <a href="Contacto.html" class="btn btn-secondary">Contactar Agora</a>
-</section>
-
-<!-- FOOTER -->
-<footer>
-    <p>© 2025 AlloCx — Capacitação & Serviços Profissionais</p>
-</footer>
+            const url = "https://wa.me/" + numero + "?text=" + texto;
+            window.open(url, "_blank");
+        }
+    </script>
 
 </body>
 </html>
-
-
